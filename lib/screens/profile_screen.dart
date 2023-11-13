@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../components/circle_image.dart';
@@ -43,12 +44,16 @@ class ProfileScreenState extends State<ProfileScreen> {
       children: [
         buildDarkModeRow(),
         ListTile(
-          title: const Text('View raywenderlich.com'),
+          title: const Text('View paycliq.africa'),
           onTap: () async {
             if (kIsWeb || Platform.isMacOS) {
-              await launchUrl(Uri.parse('https://www.raywenderlich.com/'));
+              await launchUrl(Uri.parse('https://www.paycliq.africa/'));
             } else {
               // TODO: Navigate to WebView
+              context.goNamed(
+                'rw',
+                pathParameters: {'tab': '${widget.currentTab}'},
+              );
             }
           },
         ),
@@ -56,6 +61,7 @@ class ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Log out'),
           onTap: () {
             // TODO: Logout user
+            Provider.of<AppStateManager>(context, listen: false).logout();
           },
         )
       ],

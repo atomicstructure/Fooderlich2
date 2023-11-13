@@ -18,15 +18,15 @@ class WebViewScreenState extends State<WebViewScreen> {
     super.initState();
     // Enable hybrid composition.
     controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.disabled)
-      ..loadRequest(Uri.parse('https://www.raywenderlich.com/'));
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse('https://www.paycliq.africa/'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('raywenderlich.com'),
+        title: const Text('paycliq.africa'),
       ),
       body: WebViewWidget(
         controller: controller,

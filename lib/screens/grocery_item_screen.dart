@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -65,6 +66,8 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
               }
 
               // TODO: Navigate to home:ToBuy
+              context.goNamed('home',
+                  pathParameters: {'tab': '${FooderlichTab.toBuy}'});
             },
           )
         ],
